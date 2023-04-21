@@ -10,12 +10,10 @@ import Foundation
 //Talks to Presenter
 
 enum CatError : String, Error {
-    case downloadError = "Download from server is failed"
-    case parsingError = "Json parsing failed"
+    case downloadError = "Download cats from server is failed"
+    case parsingError = "Json parsing fro cats is failed"
     case noCatInformation = "No information related to cats exists in the server"
 }
-
-// https://catfact.ninja/breeds?limit=20
 
 protocol AnyInteractor {
     var presenter : AnyPresenter? { get set }
@@ -26,7 +24,7 @@ class Interactor : AnyInteractor {
     var presenter: AnyPresenter?
     
     func downloadCats(){
-        guard let url = URL(string: "https://catfact.ninja/breeds?limit=20") else { return }
+        guard let url = URL(string: "https://catfact.ninja/breeds?limit=50") else { return }
         let session = URLSession.shared
         let request = URLRequest(url: url)
         session.dataTask(with: request) { data, response, error in
@@ -35,7 +33,6 @@ class Interactor : AnyInteractor {
                 print(CatError.downloadError)
                 return
             }
-            
 
             guard let data = data else {
                 print(CatError.downloadError)
@@ -48,7 +45,6 @@ class Interactor : AnyInteractor {
                 let catFacts = try decoder.decode(CatFacts.self, from: data)
                 guard !catFacts.data.isEmpty else { print("No cat facts in server"); return }
                 let catInfos = catFacts.data
-                print(catInfos)
                 self.presenter?.interctorDidDownloadCatFatcs(result: .success(catInfos))
             } catch {
                 self.presenter?.interctorDidDownloadCatFatcs(result: .failure(CatError.parsingError))
