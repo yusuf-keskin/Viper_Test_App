@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     let headerView : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
         return view
     }()
     
@@ -29,6 +30,7 @@ class DetailViewController: UIViewController {
     
     let insideView : UIView = {
         let view = UIView()
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -36,7 +38,7 @@ class DetailViewController: UIViewController {
     
     private let countryLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Avenir", size: 20)
+        label.font = UIFont(name: "Avenir-Bold", size: 20)
         label.textAlignment = .left
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -46,7 +48,7 @@ class DetailViewController: UIViewController {
     
     private let originLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Avenir", size: 20)
+        label.font = UIFont(name: "Avenir-Bold", size: 20)
         label.textAlignment = .left
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +58,7 @@ class DetailViewController: UIViewController {
     
     private let coatLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Avenir", size: 20)
+        label.font = UIFont(name: "Avenir-Bold", size: 20)
         label.textAlignment = .left
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +68,7 @@ class DetailViewController: UIViewController {
     
     private let patternLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Avenir", size: 20)
+        label.font = UIFont(name: "Avenir-Bold", size: 20)
         label.textAlignment = .left
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +81,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         addSubViews()
         setupLabels()
-        view.backgroundColor = .white
+        view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
     
     override func viewDidLayoutSubviews() {
